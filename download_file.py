@@ -36,12 +36,13 @@ def download_image(local_file_desired_path: str, blob_name: str) -> str:
 
     print("data: ", blob_data)
 
-    # Write data to local file
+    # Write data to local file (Not mandatory if you just want to read the data!)
     with open(local_file_desired_path, "w") as file:
         file.write(blob_data)
 
     return local_file_desired_path
 
 if __name__ == "__main__":
+    print("downloading file...")
     file_path = download_image("./data/downloaded_file.json", "test.json")
     print(f"File downloaded to: {file_path}")

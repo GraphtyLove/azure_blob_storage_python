@@ -31,6 +31,8 @@ def upload_image(file_folder_path: str, file_name: str) -> None:
       # Write local file to blob overwriting any existing data
       blob_client.upload_blob(file, overwrite=True)
 
+    print("file uploaded!")
+
     return
 
 if __name__ == "__main__":
