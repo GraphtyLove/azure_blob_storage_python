@@ -6,7 +6,7 @@ import os
 load_dotenv(".env")
 
 
-def download_image(local_file_desired_path: str, blob_name: str) -> str:
+def download_file(local_file_desired_path: str, blob_name: str) -> str:
     """
     Download a blob (file) from an Azure Storage container and save it to a local file.
 
@@ -30,19 +30,23 @@ def download_image(local_file_desired_path: str, blob_name: str) -> str:
     # Create blob (file) with same name as local file name
     blob_client = blob_service_client.get_blob_client(container=container_name, blob=blob_name)
     
-    print(f"Reading remote file: {blob_name}")
+    print(f"Downloading file: {blob_name}...")
     
     blob_data = blob_client.download_blob().read().decode("utf-8")
 
-    print("data: ", blob_data)
+    print("File's data: ", blob_data)
 
-    # Write data to local file (Not mandatory if you just want to read the data!)
+
+    print("Writing data to local file...")
+    # Write data to local file 
+    # (Not mandatory if you just want to read the data!)
     with open(local_file_desired_path, "w") as file:
         file.write(blob_data)
-
+    
+    print("File downloaded!")
+    
     return local_file_desired_path
 
 if __name__ == "__main__":
-    print("downloading file...")
-    file_path = download_image("./data/downloaded_file.json", "test.json")
+    file_path = download_file("./data/downloaded_file.json", "test.json")
     print(f"File downloaded to: {file_path}")

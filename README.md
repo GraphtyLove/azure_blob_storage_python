@@ -62,3 +62,11 @@ To download a file, you an use the code sample in [download_file.py](./download_
 ```bash
 python3 download_file.py
 ```
+
+
+### 7. Delete a file
+To delete a file, you an use the code sample in [delete_file.py](./delete_file.py)
+
+```bash
+python3 delete_file.py
+```
